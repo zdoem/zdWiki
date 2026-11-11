@@ -1,0 +1,54 @@
+# zdWiki Bounded Context & Version-Aware Retrieval Policy
+version: "1.0.0"
+
+retrieval:
+  candidate_limit: 20
+  selected_objects_max: 8
+  graph_expansion_depth: 1
+  min_bm25_score_threshold: 0.1
+  default_max_tokens: 6000
+  hard_max_tokens: 16000
+  token_safety_margin: 500
+
+ranking:
+  # Verification status boosts
+  verified_boost: 1.30
+  tested_boost: 1.20
+  source_backed_boost: 1.10
+  unverified_factor: 1.00
+  disputed_penalty: 0.70
+  invalidated_penalty: 0.10
+
+  # Lifecycle status multipliers
+  current_boost: 1.20
+  legacy_factor: 0.85
+  deprecated_penalty: 0.60
+  superseded_penalty: 0.35
+  archived_penalty: 0.15
+  experimental_factor: 0.90
+
+  # Knowledge scope boosts
+  fundamental_boost: 1.15
+  version_specific_factor: 1.00
+
+  # Project context matching
+  version_match_boost: 1.40
+  version_mismatch_penalty: 0.25
+
+  # Telemetry / verified usage feedback multiplier
+  telemetry_verified_boost_max: 1.25
+  telemetry_failure_penalty_max: 0.50
+
+raw_source_inclusion:
+  load_raw_source_by_default: false
+  allowed_triggers:
+    - "citation_verification_requested"
+    - "wiki_summary_ambiguous"
+    - "conflicting_claims_detected"
+    - "exact_code_or_data_quotation_required"
+
+prompt_formatting:
+  system_instruction_name: "zdWiki Assistant"
+  enforce_markdown_citations: true
+  treat_context_as_inert_data: true
+  defense_against_prompt_injection: true

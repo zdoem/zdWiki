@@ -1,0 +1,23 @@
+# zdWiki Master Configuration
+version: "1.0.0"
+system_name: "zdWiki"
+description: "Engineering Knowledge Operating System"
+
+paths:
+  knowledge_dir: "knowledge"
+  raw_dir: "knowledge/raw"
+  db_path: "var/zdwiki.db"
+  schema_dir: "schema"
+  config_dir: "config"
+
+policies:
+  domains_config: "config/domains.yaml"
+  source_policy: "config/source-policy.yaml"
+  knowledge_policy: "config/knowledge-policy.yaml"
+  retrieval_policy: "config/retrieval.yaml"
+  llm_config: "config/llm.yaml"
+
+bootstrap:
+  pilot_domain: "api-http"
+  human_in_the_loop: true
+  auto_commit_drafts: false

@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./apps/api/app:/app/app
+      - ./knowledge:/knowledge
+      - ./var:/app/var
+    environment:
+      - ZDWIKI_HOST=0.0.0.0
+      - ZDWIKI_PORT=8000
+      - ZDWIKI_KNOWLEDGE_DIR=/knowledge
+      - ZDWIKI_DB_PATH=/app/var/zdwiki.db
+      - ZDWIKI_RAW_DIR=/knowledge/raw
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-flash-latest}
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    depends_on:
+      - api

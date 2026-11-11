@@ -1,0 +1,57 @@
+# YAML Schema: zdWiki v1 Source Object
+$schema: "http://json-schema.org/draft-07/schema#"
+title: SourceObject
+type: object
+required:
+  - id
+  - type
+  - title
+  - source_type
+  - raw_path
+properties:
+  id:
+    type: string
+    pattern: "^source-[a-z0-9-]+$"
+    description: "Stable identifier for source object"
+  type:
+    type: string
+    enum:
+      - source
+    default: "source"
+  title:
+    type: string
+    minLength: 1
+  source_type:
+    type: string
+    enum:
+      - markdown
+      - text
+      - pdf
+      - web
+      - code
+  raw_path:
+    type: string
+    description: "Relative path in knowledge/raw/ to immutable raw artifact"
+  sha256:
+    type: string
+    description: "SHA256 checksum of the raw artifact"
+  url:
+    type: string
+    description: "Original source URL if applicable"
+  authors:
+    type: array
+    items:
+      type: string
+    default: []
+  published_date:
+    type: string
+  tags:
+    type: array
+    items:
+      type: string
+    default: []
+  summary:
+    type: string
+    default: ""
+  created_at:
+    type: string

@@ -1,0 +1,32 @@
+# zdWiki Evidence & Verification Level Policy
+version: "1.0.0"
+
+levels:
+  unverified:
+    description: "Initial draft or unverified claim."
+    rank_weight: 1.0
+    auto_promotable: false
+
+  source_backed:
+    description: "Derived from and cited with Tier A/B authoritative sources."
+    rank_weight: 1.10
+    requires_sources: true
+
+  tested:
+    description: "Verified via automated reproducible test suites."
+    rank_weight: 1.20
+    requires_test_reference: true
+
+  verified:
+    description: "Passed complete Engineering Loop verification with reproducible evidence."
+    rank_weight: 1.30
+    requires_loop_id: true
+
+  disputed:
+    description: "Conflicting credible evidence exists; both sides recorded."
+    rank_weight: 0.70
+    preserve_all_claims: true
+
+  invalidated:
+    description: "Proven false or harmful for stated context; preserved for forensic warning."
+    rank_weight: 0.10

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "bench-auth-vs-authz",
+    "question": "What is the difference between authentication and authorization?",
+    "domain": "security",
+    "expected_topics": ["identity", "permissions", "jwt", "oauth2", "roles", "token"],
+    "expected_knowledge_objects": ["concept-jwt-auth", "source-rfc-6749-the-oauth-20-authorization-framework", "source-rfc-7519"],
+    "required_source_quality": "Tier A",
+    "evaluation_mode": "retrieval_and_groundedness"
+  },
+  {
+    "id": "bench-db-transactions",
+    "question": "When should a database transaction be used?",
+    "domain": "database",
+    "expected_topics": ["acid", "atomicity", "consistency", "isolation", "rollback", "sqlite"],
+    "expected_knowledge_objects": ["tech-sqlite", "decision-markdown-canonical"],
+    "required_source_quality": "Tier A",
+    "evaluation_mode": "retrieval_and_groundedness"
+  },
+  {
+    "id": "bench-http-502-diagnosis",
+    "question": "How do you diagnose an HTTP 502 error?",
+    "domain": "debugging",
+    "expected_topics": ["bad gateway", "reverse proxy", "nginx", "upstream", "timeout", "oom", "socket"],
+    "expected_knowledge_objects": ["playbook-http-502-bad-gateway", "source-engineering-playbook-http-502-bad-gateway-triage"],
+    "required_source_quality": "Tier B",
+    "evaluation_mode": "retrieval_and_groundedness"
+  },
+  {
+    "id": "bench-sql-joins",
+    "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+    "domain": "database",
+    "expected_topics": ["sql", "join", "matching rows", "null", "relational", "sqlite"],
+    "expected_knowledge_objects": ["tech-sqlite"],
+    "required_source_quality": "Tier A",
+    "evaluation_mode": "retrieval_and_groundedness"
+  },
+  {
+    "id": "bench-rest-idempotency",
+    "question": "How should a REST API handle idempotency?",
+    "domain": "api",
+    "expected_topics": ["idempotency-key", "post", "put", "retry", "replay", "rfc 9110", "safe methods"],
+    "expected_knowledge_objects": ["concept-http-methods", "pat-idempotency-key", "test-http-idempotency"],
+    "required_source_quality": "Tier A",
+    "evaluation_mode": "retrieval_and_groundedness"
+  },
+  {
+    "id": "bench-docker-crash-loop",
+    "question": "How do you debug a Docker container that repeatedly restarts?",
+    "domain": "docker",
+    "expected_topics": ["docker", "restart", "exit code", "logs", "crashloop", "entrypoint", "oom"],
+    "expected_knowledge_objects": ["tech-python", "playbook-http-502-bad-gateway"],
+    "required_source_quality": "Tier B",
+    "evaluation_mode": "retrieval_and_groundedness"
+  },
+  {
+    "id": "bench-testing-levels",
+    "question": "What is the difference between unit, integration, and E2E tests?",
+    "domain": "testing",
+    "expected_topics": ["unit", "integration", "e2e", "mock", "isolation", "pytest", "regression"],
+    "expected_knowledge_objects": ["test-jwt-expiry", "test-http-idempotency"],
+    "required_source_quality": "Tier A",
+    "evaluation_mode": "retrieval_and_groundedness"
+  }
+]

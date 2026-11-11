@@ -1,0 +1,14 @@
+# zdWiki Knowledge Freshness & Review Policy
+version: "1.0.0"
+
+stability_review_intervals_days:
+  volatile: 30       # Vendor SDKs, fast-moving AI models, framework minor releases
+  low: 90            # Libraries, application deployment configs
+  medium: 180        # Architectural patterns, established frameworks
+  high: 730          # Fundamental concepts (ACID, HTTP semantics, Big-O, TCP)
+
+rules:
+  fundamentals_immune_to_file_age: true
+  flag_overdue_volatile_pages: true
+  auto_external_calls_during_search: false
+  maintenance_run_review_audit: true

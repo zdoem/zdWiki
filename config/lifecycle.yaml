@@ -1,0 +1,41 @@
+# zdWiki Knowledge Lifecycle Policy
+version: "1.0.0"
+
+statuses:
+  current:
+    description: "Active, recommended engineering knowledge for modern environments."
+    retrieval_priority: 1.0
+    is_default: true
+
+  legacy:
+    description: "Historical or older version-specific knowledge, retained for maintenance of older systems."
+    retrieval_priority: 0.85
+    requires_version_context: true
+
+  deprecated:
+    description: "Official deprecation declared by maintainers; still functional but replacement recommended."
+    retrieval_priority: 0.60
+    requires_replacement_link: true
+
+  superseded:
+    description: "Completely replaced or obsoleted by modern patterns/technologies."
+    retrieval_priority: 0.35
+    requires_replacement_link: true
+
+  experimental:
+    description: "Preview or experimental APIs/architectures under active evaluation."
+    retrieval_priority: 0.70
+
+  archived:
+    description: "Frozen historical record retained purely for audit, provenance, or forensics."
+    retrieval_priority: 0.15
+
+  unknown:
+    description: "Unclassified lifecycle status."
+    retrieval_priority: 0.50
+
+rules:
+  allow_destructive_deletion: false
+  deletion_policy: "exceptional_only"
+  superseded_must_link_replacement: true
+  warn_on_deprecated_without_replacement: true

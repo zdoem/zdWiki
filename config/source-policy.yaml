@@ -1,0 +1,49 @@
+# zdWiki Source Quality & Provenance Policy
+version: "1.0.0"
+
+tiers:
+  tier_a:
+    name: "Authoritative Standards & Primary Research"
+    description: "Official RFCs, W3C/IETF/ISO standards, vendor official core documentation, peer-reviewed engineering research."
+    weight: 1.0
+    allowed_object_types: ["all"]
+    examples: ["RFC 9110", "FastAPI Docs", "PostgreSQL Official Documentation", "Python Language Reference"]
+    requires_human_review: false
+
+  tier_b:
+    name: "Maintainer Guides & Canonical Handbooks"
+    description: "Core maintainer guides, established engineering textbooks, production architecture blueprints from lead authors."
+    weight: 0.85
+    allowed_object_types: ["all"]
+    examples: ["Designing Data-Intensive Applications", "Site Reliability Engineering Book", "Linux Kernel Module Programming Guide"]
+    requires_human_review: false
+
+  tier_c:
+    name: "Technical Deep Dives & Engineering Case Studies"
+    description: "Company engineering blogs (e.g. Netflix Tech Blog, Uber Engineering), conference technical talks, verified post-mortems."
+    weight: 0.65
+    allowed_object_types: ["pattern", "architecture", "bug", "debug_playbook", "analysis"]
+    examples: ["AWS re:Invent Architecture Deep Dive", "Stripe Tech Blog on Idempotency"]
+    requires_human_review: true
+
+  tier_d:
+    name: "Community Discussions & Practical Field Notes"
+    description: "Stack Overflow answers, Reddit r/programming, GitHub issues/discussions, community forum posts."
+    weight: 0.40
+    allowed_object_types: ["bug", "debug_playbook", "test"]
+    examples: ["Stack Overflow thread on SQLite lock contention", "GitHub Issue troubleshooting note"]
+    requires_human_review: true
+    restrictions:
+      - "Tier D sources must NEVER become canonical truth for core concept definitions."
+      - "Tier D sources are restricted to practical field notes, diagnostic hints, and bug observations."
+
+rules:
+  immutability:
+    enforce_sha256: true
+    allow_raw_overwrite: false
+    archive_path_template: "knowledge/raw/{category}/{sha256_prefix}_{filename}"
+
+  conflict_resolution:
+    preserve_conflicts: true
+    conflict_action: "record_divergence"
+    explanation: "Conflicting claims across sources must be preserved with explicit citations rather than silently overwritten."

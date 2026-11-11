@@ -1,0 +1,7 @@
+**/node_modules
+**/.next
+**/.git
+**/.pytest_cache
+**/__pycache__
+var/*.db
+*.pyc

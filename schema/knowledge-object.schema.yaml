@@ -1,0 +1,77 @@
+# YAML Schema: zdWiki v1 Knowledge Object
+$schema: "http://json-schema.org/draft-07/schema#"
+title: KnowledgeObject
+type: object
+required:
+  - id
+  - type
+  - title
+  - status
+properties:
+  id:
+    type: string
+    pattern: "^(concept|tech|pat|arch|source|test|bug|playbook|decision|analysis|loop)-[a-z0-9-]+$"
+    description: "Stable, language-neutral, kebab-case identifier with type prefix"
+  type:
+    type: string
+    enum:
+      - concept
+      - technology
+      - pattern
+      - architecture
+      - source
+      - test
+      - bug
+      - debug_playbook
+      - decision
+      - analysis
+      - engineering_loop
+  title:
+    type: string
+    minLength: 1
+    description: "Human-readable title"
+  aliases:
+    type: array
+    items:
+      type: string
+    default: []
+  domains:
+    type: array
+    items:
+      type: string
+    default: []
+  tags:
+    type: array
+    items:
+      type: string
+    default: []
+  summary:
+    type: string
+    default: ""
+  relations:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        type: string
+    description: "Map of relation types (related_to, uses, implements, tests, fixes, replaces) to target object IDs"
+  sources:
+    type: array
+    items:
+      type: string
+    default: []
+  created_at:
+    type: string
+    description: "ISO8601 creation timestamp or date"
+  updated_at:
+    type: string
+    description: "ISO8601 update timestamp or date"
+  status:
+    type: string
+    enum:
+      - draft
+      - active
+      - deprecated
+      - verified
+      - archived
+    default: "active"

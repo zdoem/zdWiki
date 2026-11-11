@@ -1,0 +1,21 @@
+# .zdwiki/project.yaml — Project Context Declaration
+project: zdWiki-v1
+version: 1.0.0
+
+context:
+  language:
+    python: "3.10"
+    typescript: "5.0"
+  framework:
+    fastapi: "0.115"
+    nextjs: "14.2"
+  database:
+    sqlite: "3.45"
+  environment: "development"
+
+domains:
+  - backend
+  - frontend
+  - api
+  - architecture
+  - security

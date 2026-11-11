@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Default: Classic Engineering Console Theme */
+  :root,
+  [data-theme="console"] {
+    --bg-canvas: #0f1319;
+    --bg-surface: #151b26;
+    --bg-surface-elevated: #1e2634;
+    --bg-surface-highlight: #263244;
+    --border-subtle: #232f3e;
+    --border-hairline: rgba(255, 255, 255, 0.08);
+    --accent-brass: #f0b429;
+    --accent-brass-hover: #d97706;
+    --accent-cyan: #00d2d3;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+    --font-display: var(--font-heading), sans-serif;
+
+    /* Sidebar Semantic Tokens (Console Theme) */
+    --sidebar-bg: #121722;
+    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-text: #f1f5f9;
+    --sidebar-muted: #94a3b8;
+    --sidebar-dim: #64748b;
+    --sidebar-hover-bg: rgba(255, 255, 255, 0.05);
+    --sidebar-active-bg: rgba(240, 180, 41, 0.12);
+    --sidebar-active-text: #f0b429;
+    --sidebar-active-border: rgba(240, 180, 41, 0.35);
+    --sidebar-accent: #f0b429;
+    --sidebar-section-label: #64748b;
+    --sidebar-count-bg: rgba(255, 255, 255, 0.06);
+    --sidebar-count-text: #94a3b8;
+  }
+
+  /* Dark Space HUD Theme — Void, Hull, Solar, Ice, Dust & Orbitron */
+  [data-theme="space-hud"] {
+    --bg-canvas: #04060e;
+    --bg-surface: #0a0f1f;
+    --bg-surface-elevated: #10172e;
+    --bg-surface-highlight: #182344;
+    --border-subtle: #1c2b50;
+    --border-hairline: rgba(127, 216, 232, 0.18);
+    --accent-brass: #ffb24d;        /* Solar Amber */
+    --accent-brass-hover: #f59e0b;
+    --accent-cyan: #7fd8e8;         /* Ice Cyan */
+    --text-main: #f0f4fc;
+    --text-muted: #93a4c6;          /* Dust Slate */
+    --text-dim: #5c6e94;
+    --font-display: var(--font-orbitron), sans-serif;
+
+    /* Sidebar Semantic Tokens (Space HUD Theme) */
+    --sidebar-bg: #070b18;
+    --sidebar-border: rgba(127, 216, 232, 0.15);
+    --sidebar-text: #f0f4fc;
+    --sidebar-muted: #93a4c6;
+    --sidebar-dim: #5c6e94;
+    --sidebar-hover-bg: rgba(127, 216, 232, 0.06);
+    --sidebar-active-bg: rgba(255, 178, 77, 0.14);
+    --sidebar-active-text: #ffb24d;
+    --sidebar-active-border: rgba(255, 178, 77, 0.45);
+    --sidebar-accent: #ffb24d;
+    --sidebar-section-label: #7fd8e8;
+    --sidebar-count-bg: rgba(127, 216, 232, 0.09);
+    --sidebar-count-text: #7fd8e8;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-main);
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Console Ambient Background */
+  [data-theme="console"] body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 15% 15%, rgba(240, 180, 41, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(15, 19, 25, 0.98) 0%, rgba(10, 13, 18, 1) 100%);
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  [data-theme="console"] body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Dark Space HUD Ambient Starfield, Scanlines & Vignette */
+  [data-theme="space-hud"] body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 50% 30%, rgba(255, 178, 77, 0.05) 0%, transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(127, 216, 232, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at center, rgba(4, 6, 14, 0.4) 0%, rgba(4, 6, 14, 0.95) 85%, rgba(2, 3, 8, 1) 100%);
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  [data-theme="space-hud"] body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0px, rgba(0, 0, 0, 0.18) 1px, transparent 1px, transparent 2px),
+      radial-gradient(2px 2px at 20px 30px, #93a4c6, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 100px 150px, #7fd8e8, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 220px 80px, #ffb24d, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 300px 250px, #ffffff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 100% 100%, 350px 350px, 400px 400px, 300px 300px, 250px 250px;
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+/* Custom Semantic Classes */
+.panel {
+  background: var(--bg-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-hairline);
+  border-radius: 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+[data-theme="space-hud"] .panel {
+  border-radius: 0.25rem;
+  border: 1px solid rgba(127, 216, 232, 0.22);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(127, 216, 232, 0.02);
+  position: relative;
+}
+
+[data-theme="space-hud"] .panel:hover {
+  border-color: rgba(255, 178, 77, 0.4);
+  box-shadow: 0 4px 24px -2px rgba(255, 178, 77, 0.1), inset 0 0 15px rgba(255, 178, 77, 0.03);
+}
+
+/* Chamfered Cut Corners for Space HUD */
+.chamfered-hud {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.chamfered-btn {
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+
+.panel-header {
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 0.875rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+[data-theme="space-hud"] .font-heading {
+  font-family: var(--font-orbitron), sans-serif;
+  letter-spacing: 0.04em;
+}
+
+[data-theme="space-hud"] .font-hud {
+  font-family: var(--font-orbitron), monospace;
+}
+
+.hairline {
+  border-color: var(--border-hairline);
+}
+
+.glow-brass {
+  box-shadow: 0 0 20px -3px rgba(240, 180, 41, 0.25);
+}
+
+.glow-solar {
+  box-shadow: 0 0 20px -2px rgba(255, 178, 77, 0.35);
+}
+
+.glow-ice {
+  box-shadow: 0 0 20px -2px rgba(127, 216, 232, 0.35);
+}
+
+.kbd {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-main);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.4);
+}
+
+/* Safe Markdown Styling (.md-body) */
+.md-body {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.md-body h1 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.md-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 0.35rem;
+}
+
+.md-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-brass);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.md-body p {
+  margin-bottom: 1rem;
+}
+
+.md-body ul, .md-body ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.md-body li {
+  margin-bottom: 0.35rem;
+}
+
+.md-body blockquote {
+  border-left: 3px solid var(--accent-brass);
+  background: rgba(255, 178, 77, 0.06);
+  padding: 0.75rem 1rem;
+  border-radius: 0 0.375rem 0.375rem 0;
+  margin-bottom: 1rem;
+}
+
+.md-body code {
+  font-family: var(--font-mono), monospace;
+  background: var(--bg-surface-elevated);
+  color: var(--accent-brass);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  border: 1px solid var(--border-hairline);
+}
+
+.md-body pre {
+  font-family: var(--font-mono), monospace;
+  background: #020409;
+  border: 1px solid var(--border-hairline);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.md-body pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: #e2e8f0;
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-highlight);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-brass);
+}

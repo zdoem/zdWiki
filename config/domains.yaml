@@ -1,0 +1,136 @@
+# zdWiki Domain Taxonomy & Competency Map
+version: "1.0.0"
+
+domains:
+  software_engineering:
+    name: "Software Engineering"
+    description: "Core software design, systems programming, and operational disciplines."
+    areas:
+      - id: "git"
+        name: "Git & Version Control"
+        tags: ["git", "vcs", "branching", "rebase"]
+      - id: "linux"
+        name: "Linux & Operating Systems"
+        tags: ["linux", "posix", "kernel", "cli", "systemd"]
+      - id: "networking"
+        name: "Networking & Protocols"
+        tags: ["tcp", "udp", "http", "tls", "dns", "sockets"]
+      - id: "api"
+        name: "API Design & Protocols"
+        tags: ["rest", "graphql", "grpc", "openapi", "idempotency"]
+      - id: "backend"
+        name: "Backend Architecture & Runtimes"
+        tags: ["fastapi", "python", "node", "asyncio", "concurrency"]
+      - id: "frontend"
+        name: "Frontend & Web Technologies"
+        tags: ["nextjs", "react", "typescript", "tailwind", "dom"]
+      - id: "database"
+        name: "SQL & Relational Databases"
+        tags: ["sql", "sqlite", "postgres", "indexes", "transactions", "acid"]
+      - id: "testing"
+        name: "Automated Testing & QA"
+        tags: ["unit-testing", "integration-testing", "e2e", "pytest", "playwright"]
+      - id: "debugging"
+        name: "Diagnostics & Debugging"
+        tags: ["debug", "profiling", "logs", "root-cause", "playbooks"]
+      - id: "architecture"
+        name: "System Architecture"
+        tags: ["microservices", "modular-monolith", "event-driven", "patterns"]
+      - id: "docker"
+        name: "Containers & Docker"
+        tags: ["docker", "containers", "compose", "cgroups", "oci"]
+      - id: "cicd"
+        name: "CI/CD & DevOps"
+        tags: ["github-actions", "pipelines", "automation", "release"]
+      - id: "security"
+        name: "Application & Network Security"
+        tags: ["auth", "jwt", "oauth2", "encryption", "owasp", "threat-model"]
+      - id: "observability"
+        name: "Observability & Telemetry"
+        tags: ["metrics", "tracing", "logging", "otel", "prometheus"]
+      - id: "performance"
+        name: "Performance & Optimization"
+        tags: ["latency", "throughput", "caching", "memory-leaks", "benchmarks"]
+
+  data_engineering:
+    name: "Data Engineering"
+    description: "Data architectures, pipelines, storage engines, and analytical modeling."
+    areas:
+      - id: "data_sql"
+        name: "Advanced SQL & Query Optimization"
+        tags: ["sql", "window-functions", "cte", "query-plan"]
+      - id: "data_modeling"
+        name: "Data Modeling & Schemas"
+        tags: ["relational-schema", "star-schema", "normalization", "scd"]
+      - id: "etl"
+        name: "ETL & Batch Processing"
+        tags: ["etl", "extraction", "transformation", "loading", "airflow"]
+      - id: "data_pipeline"
+        name: "Streaming & Data Pipelines"
+        tags: ["kafka", "spark", "streaming", "backpressure"]
+      - id: "data_warehouse"
+        name: "Data Warehousing"
+        tags: ["olap", "snowflake", "bigquery", "clickhouse", "parquet"]
+      - id: "vector_database"
+        name: "Vector Databases & Embeddings Storage"
+        tags: ["vector-db", "hnsw", "cosine-similarity", "ann", "chroma"]
+
+  ai_ml_engineering:
+    name: "AI / ML & LLM Engineering"
+    description: "Machine learning, modern LLMs, retrieval augmented generation, and agents."
+    areas:
+      - id: "ml_basics"
+        name: "ML Fundamentals"
+        tags: ["supervised", "unsupervised", "loss-functions", "gradient-descent"]
+      - id: "deep_learning"
+        name: "Deep Learning & Neural Architectures"
+        tags: ["transformers", "attention", "cnn", "rnn", "backpropagation"]
+      - id: "evaluation"
+        name: "Model Evaluation & Benchmarking"
+        tags: ["evals", "ragas", "groundedness", "f1-score", "perplexity"]
+      - id: "embeddings"
+        name: "Embeddings & Semantic Representations"
+        tags: ["dense-embeddings", "sparse-embeddings", "tokenization", "bert"]
+      - id: "rag"
+        name: "Retrieval-Augmented Generation (RAG)"
+        tags: ["rag", "chunking", "reranking", "hybrid-search", "bm25"]
+      - id: "prompt_engineering"
+        name: "Prompt Engineering & Few-Shot Design"
+        tags: ["prompts", "system-instructions", "chain-of-thought", "in-context"]
+      - id: "agents"
+        name: "Autonomous Agents & Multi-Agent Loops"
+        tags: ["agents", "react-loop", "planning", "memory", "subagents"]
+      - id: "tool_calling"
+        name: "Tool Calling & Function Execution"
+        tags: ["function-calling", "tool-use", "json-schema", "sandbox"]
+      - id: "mlops"
+        name: "MLOps & LLMOps"
+        tags: ["model-serving", "quantization", "vllm", "finetuning", "registry"]
+
+  product_design:
+    name: "Product, BA & UX"
+    description: "Product specification, user experience, and design systems."
+    areas:
+      - id: "business_analysis"
+        name: "Business Analysis & Problem Framing"
+        tags: ["ba", "problem-statement", "domain-driven", "user-stories"]
+      - id: "requirements"
+        name: "Requirements Engineering & Specifications"
+        tags: ["specs", "acceptance-criteria", "functional-requirements", "nfr"]
+      - id: "ux_ui"
+        name: "UX / UI Engineering"
+        tags: ["ux", "interaction-design", "accessibility", "a11y", "wireframes"]
+      - id: "design_systems"
+        name: "Design Systems & Component Architecture"
+        tags: ["tokens", "design-system", "atomic-design", "components"]
+
+  domain_expert:
+    name: "Domain Expertise"
+    description: "Industry-specific rules, regulatory frameworks, and financial workflows."
+    areas:
+      - id: "accounting"
+        name: "Accounting & Ledger Systems"
+        tags: ["double-entry", "general-ledger", "reconciliation", "gaap", "ifrs"]
+      - id: "finance"
+        name: "Financial Engineering & Operations"
+        tags: ["payments", "settlement", "risk-modeling", "amortization", "fx"]

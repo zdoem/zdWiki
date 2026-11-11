@@ -1,0 +1,85 @@
+# zdWiki Knowledge Compilation, Atomicity & Verification Policy
+version: "1.0.0"
+
+compilation:
+  pipeline_flow:
+    - step: "collect_source"
+      description: "Ingest source file or URL into raw/ with SHA-256 digest."
+    - step: "extract_candidate_knowledge"
+      description: "Parse structured text and identify candidate topics, models, or playbooks."
+    - step: "detect_existing_objects"
+      description: "Query full-text index for existing canonical objects covering the same concept/tech."
+    - step: "propose_action"
+      options: ["create_new", "update_existing", "add_relation", "record_conflict"]
+    - step: "human_review"
+      required_during_bootstrap: true
+    - step: "commit_markdown"
+      description: "Write formatted UTF-8 Markdown with YAML frontmatter to knowledge/."
+    - step: "update_index"
+      description: "Upsert SQLite FTS5 index and relations graph."
+    - step: "lint_verification"
+      description: "Run KnowledgeLinter to verify zero broken links or schema errors."
+
+atomicity_policy:
+  target_token_range: [500, 2000]
+  soft_max_tokens: 3000
+  hard_split_threshold: 3500
+  splitting_guidelines:
+    - "Do not create 20,000-token monolithic encyclopedia pages."
+    - "Decompose broad topics into interconnected atomic objects using relations (e.g. relates_to, uses, depends_on)."
+    - "Prefer focused documents with rich graph relationships over sprawling single-file guides."
+
+template_sections:
+  concept:
+    - "Goal / Purpose"
+    - "Mental Model"
+    - "Architecture & Mechanisms"
+    - "Key Invariants"
+    - "Common Failure Modes"
+    - "Related Knowledge & Cross-References"
+    - "Authoritative Sources"
+  technology:
+    - "Overview & Role"
+    - "Architecture & Internals"
+    - "Setup & Core API Usage"
+    - "Performance Characteristics"
+    - "Common Gotchas & Debugging"
+    - "Related Knowledge"
+    - "Official Sources"
+  pattern:
+    - "Problem Statement"
+    - "Solution Architecture"
+    - "Trade-offs & Alternatives"
+    - "Implementation Example"
+    - "Verification & Testing"
+    - "Related Patterns"
+  debug_playbook:
+    - "Diagnostic Symptom"
+    - "Likely Root Causes"
+    - "Step-by-Step Triage Workflow"
+    - "Diagnostic Commands & Log Queries"
+    - "Remediation & Fix"
+    - "Regression Test Plan"
+  engineering_loop:
+    - "Goal"
+    - "Context"
+    - "Plan"
+    - "Implement"
+    - "Test (Failed)"
+    - "Diagnose"
+    - "Fix"
+    - "Re-test (Passed)"
+    - "Verify"
+    - "Learn"
+
+verification_levels:
+  unverified:
+    description: "Initial draft extracted from unverified or automated sources."
+  source_backed:
+    description: "Extracted and cross-referenced with Tier A/B authoritative sources."
+  tested:
+    description: "Verified through reproducible automated test suites."
+  verified:
+    description: "Fully verified via completed engineering loop with passing evidence."
+  deprecated:
+    description: "Obsolete engineering practice or superseded technology version."

@@ -1,0 +1,99 @@
+{
+  "total_benchmarks": 7,
+  "hit_rate_pct": 100.0,
+  "mean_reciprocal_rank": 0.571,
+  "avg_latency_ms": 4.5,
+  "results": [
+    {
+      "id": "bench-auth-vs-authz",
+      "question": "What is the difference between authentication and authorization?",
+      "latency_ms": 4.13,
+      "retrieved_count": 8,
+      "retrieved_top": [
+        "concept-jwt-auth",
+        "source-rfc-6749-the-oauth-20-authorization-framework",
+        "test-jwt-expiry"
+      ],
+      "reciprocal_rank": 1.0,
+      "hit": true
+    },
+    {
+      "id": "bench-db-transactions",
+      "question": "When should a database transaction be used?",
+      "latency_ms": 3.71,
+      "retrieved_count": 8,
+      "retrieved_top": [
+        "loop-jwt-refresh-race",
+        "debug-refresh-token-race",
+        "pat-idempotency-key"
+      ],
+      "reciprocal_rank": 0.0,
+      "hit": true
+    },
+    {
+      "id": "bench-http-502-diagnosis",
+      "question": "How do you diagnose an HTTP 502 error?",
+      "latency_ms": 5.06,
+      "retrieved_count": 8,
+      "retrieved_top": [
+        "playbook-http-502-bad-gateway",
+        "source-oauth2-security-guidelines",
+        "source-engineering-playbook-http-502-bad-gateway-triage"
+      ],
+      "reciprocal_rank": 1.0,
+      "hit": true
+    },
+    {
+      "id": "bench-sql-joins",
+      "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+      "latency_ms": 4.16,
+      "retrieved_count": 8,
+      "retrieved_top": [
+        "playbook-jwt-debug",
+        "pat-idempotency-key",
+        "concept-jwt-auth"
+      ],
+      "reciprocal_rank": 0.0,
+      "hit": true
+    },
+    {
+      "id": "bench-rest-idempotency",
+      "question": "How should a REST API handle idempotency?",
+      "latency_ms": 3.84,
+      "retrieved_count": 8,
+      "retrieved_top": [
+        "source-ietf-draft-the-idempotency-key-http-header-field",
+        "concept-http-methods",
+        "playbook-jwt-debug"
+      ],
+      "reciprocal_rank": 0.5,
+      "hit": true
+    },
+    {
+      "id": "bench-docker-crash-loop",
+      "question": "How do you debug a Docker container that repeatedly restarts?",
+      "latency_ms": 5.04,
+      "retrieved_count": 8,
+      "retrieved_top": [
+        "playbook-http-502-bad-gateway",
+        "source-oauth2-security-guidelines",
+        "tech-sqlite"
+      ],
+      "reciprocal_rank": 1.0,
+      "hit": true
+    },
+    {
+      "id": "bench-testing-levels",
+      "question": "What is the difference between unit, integration, and E2E tests?",
+      "latency_ms": 5.53,
+      "retrieved_count": 8,
+      "retrieved_top": [
+        "loop-e2e-verification",
+        "test-http-idempotency",
+        "test-refresh-token-reuse"
+      ],
+      "reciprocal_rank": 0.5,
+      "hit": true
+    }
+  ]
+}

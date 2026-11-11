@@ -1,0 +1,25 @@
+# zdWiki Knowledge Maintenance & Diagnostic Policy
+version: "1.0.0"
+
+thresholds:
+  page_tokens_target: [500, 2000]
+  page_tokens_warning: 3000
+  page_tokens_hard_split: 3500
+
+  near_duplicate_jaccard_threshold: 0.75
+  orphan_max_unlinked_days: 60
+
+diagnostics:
+  check_broken_relations: true
+  check_orphan_objects: true
+  check_stale_pages: true
+  check_deprecated_without_replacement: true
+  check_superseded_without_replacement: true
+  check_missing_version_on_version_specific: true
+  check_missing_provenance: true
+  check_oversized_pages: true
+  check_potential_duplicates: true
+
+actions_policy:
+  allow_automatic_destructive_cleanup: false
+  recommendation_only: true

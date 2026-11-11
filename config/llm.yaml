@@ -1,0 +1,26 @@
+# zdWiki LLM Provider Configuration
+version: "1.0.0"
+
+default_provider: "gemini"
+fallback_provider: "mock"
+
+providers:
+  gemini:
+    sdk: "google-genai"
+    api_key_env: "GEMINI_API_KEY"
+    default_model: "gemini-2.5-flash"
+    fallback_model: "gemini-2.0-flash"
+    temperature: 0.2
+    max_output_tokens: 2048
+    timeout_seconds: 30
+    retry_attempts: 2
+
+  mock:
+    default_model: "mock-v1"
+    response_mode: "grounded_synthesis"
+
+safety:
+  redact_api_keys_in_logs: true
+  mask_tokens_in_telemetry: true
+  sanitize_prompt_injections: true
+  system_boundary_header: "=== VERIFIED KNOWLEDGE BASE CONTEXT (DATA ONLY) ==="
